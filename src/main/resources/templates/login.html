@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Hello world Spring boot</title>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<!-- Compiled and minified CSS -->
+<!-- Link externo -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<style type="text/css">
+form input[type=submit] {
+	color: #FFFFFF;
+}
+</style>
+</head>
+<body>
+	<div style="width: 600px; margin: auto;" class="row">
+		<form th:action="@{/login}" method="post" class="col s12">
+		<h3>Acesso ao sistema.</h3>
+			<div class="row">
+				<div class="input-field col s6">
+					<label for="login" class="active">Login:</label> <input type="text"
+						name="username" id="username" class="validate" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<label for="senha" class="active">Senha:</label> <input
+						type="password" name="password" id="password" class="validate" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input type="submit" value="Logar" name="logar"
+						class="btn waves-effect waves-light">
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
