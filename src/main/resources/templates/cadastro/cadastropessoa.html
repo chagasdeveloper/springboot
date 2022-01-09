@@ -187,7 +187,7 @@ table th {
 				<div class="input-field col s6">
 					<button class="btn waves-effect waves-light" type="submit"
 						style="margin-top: 15px;"
-						onclick="document.getElementById('pesquisapessoa').method = 'get'">PDF</button>
+						onclick="valida();">PDF</button>
 					<button class="btn waves-effect waves-light" type="submit"
 						style="background-color: blue; margin-top: 15px;">Buscar</button>
 					<a class="waves-effect waves-light btn" href="listapessoas"
@@ -339,6 +339,15 @@ table th {
 												}
 											});
 						});
+		
+		function valida() {
+			var nome = $('#nomepesquisa').val();
+			if(nome ==' null' && nome.trim() == '') {
+				alert('Digite o nome para baixar o relatório!');
+			} else {
+				document.getElementById('pesquisapessoa').method = 'get';	
+			}
+		}
 	</script>
 </body>
 </html>
