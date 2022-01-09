@@ -342,7 +342,7 @@ table th {
 		
 		function valida() {
 			var nome = $('#nomepesquisa').val();
-			if(nome ==' null' && nome.trim() == '') {
+			if(nome =='null' || nome.trim() == '') {
 				alert('Digite o nome para baixar o relatório!');
 			} else {
 				document.getElementById('pesquisapessoa').method = 'get';	
