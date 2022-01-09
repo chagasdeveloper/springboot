@@ -25,7 +25,7 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
 
 	@Query(value = "select p from Pessoa p where p.sexopessoa = ?1")
 	List<Pessoa> findPessoaBySexo(String sexopessoa);
-
+	// pesquisa só pelo nome
 	default Page<Pessoa> findPessoaByNamePage(String nome, Pageable pageable) {
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome(nome);
@@ -38,8 +38,36 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
 		Page<Pessoa> pessoas = findAll(example, pageable);
 		return pessoas;
 	}
-
-	default Page<Pessoa> findPessoaBySexoPage(String nome, String sexo, Pageable pageable) {
+	// pesquisa pelo nome e sexo
+	default Page<Pessoa> findPessoaByNameSexoPage(String nome, String sexo, Pageable pageable) {
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome(nome);
+		pessoa.setSexopessoa(sexo);
+		// Estamos configurando a pesquisa para consultar por partes do nome no banco de
+		// dados, igual ao Like com SQL.
+		ExampleMatcher exampleMatcher = ExampleMatcher.matchingAny()
+				.withMatcher("nome", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
+				.withMatcher("sexopessoa", ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
+		// Une o objeto com o valor e a configuração para consultar
+		Example<Pessoa> example = Example.of(pessoa, exampleMatcher);
+		Page<Pessoa> pessoas = findAll(example, pageable);
+		return pessoas;
+	}
+	// pesquisa só pelo sexo.
+	default Page<Pessoa> findPessoaBySexoPage(String sexo, Pageable pageable) {
+		Pessoa pessoa = new Pessoa();
+		pessoa.setSexopessoa(sexo);
+		// Estamos configurando a pesquisa para consultar por partes do nome no banco de
+		// dados, igual ao Like com SQL.
+		ExampleMatcher exampleMatcher = ExampleMatcher.matchingAny().withMatcher("sexopessoa",
+				ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
+		// Une o objeto com o valor e a configuração para consultar
+		Example<Pessoa> example = Example.of(pessoa, exampleMatcher);
+		Page<Pessoa> pessoas = findAll(example, pageable);
+		return pessoas;
+	}
+	// pesquisa todos
+	default Page<Pessoa> findPessoaByPage(String nome, String sexo, Pageable pageable) {
 		Pessoa pessoa = new Pessoa();
 		pessoa.setNome(nome);
 		pessoa.setSexopessoa(sexo);
