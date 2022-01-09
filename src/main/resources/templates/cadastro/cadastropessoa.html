@@ -187,9 +187,9 @@ table th {
 				<div class="input-field col s6">
 					<button class="btn waves-effect waves-light" type="submit"
 						style="margin-top: 15px;"
-						onclick="valida();">PDF</button>
+						onclick="imprimirPdf();">PDF</button>
 					<button class="btn waves-effect waves-light" type="submit"
-						style="background-color: blue; margin-top: 15px;">Buscar</button>
+						style="background-color: blue; margin-top: 15px;" onclick="buscar();">Buscar</button>
 					<a class="waves-effect waves-light btn" href="listapessoas"
 						style="background-color: orange; margin-top: 15px">Listar
 						Todos</a>
@@ -339,14 +339,11 @@ table th {
 												}
 											});
 						});
-		
-		function valida() {
-			var nome = $('#nomepesquisa').val();
-			if(nome =='null' || nome.trim() == '') {
-				alert('Digite o nome para baixar o relatório!');
-			} else {
-				document.getElementById('pesquisapessoa').method = 'get';	
-			}
+		function imprimirPdf() {
+			document.getElementById('pesquisapessoa').method = 'get'
+		}
+		function buscar() {
+			document.getElementById('pesquisapessoa').method = 'post'
 		}
 	</script>
 </body>
