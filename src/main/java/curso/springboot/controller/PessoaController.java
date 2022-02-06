@@ -32,7 +32,6 @@ import curso.springboot.model.Telefone;
 import curso.springboot.repository.PessoaRepository;
 import curso.springboot.repository.ProfissaoRepository;
 import curso.springboot.repository.TelefoneRepository;
-import net.bytebuddy.asm.Advice.Return;
 
 @Controller
 public class PessoaController {

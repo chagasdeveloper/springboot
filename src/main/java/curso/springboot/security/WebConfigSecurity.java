@@ -38,6 +38,8 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 				.logoutSuccessUrl("/login")
 				//Mapeia URL de Logout e invalida Usuário autenticado.
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+		
+		
 	}
 
 	@Override // Cria a autenticação do Usuário com banco de dados ou em memória

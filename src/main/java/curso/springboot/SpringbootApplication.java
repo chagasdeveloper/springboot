@@ -21,7 +21,7 @@ public class SpringbootApplication implements WebMvcConfigurer{
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootApplication.class, args);
-		
+		//teste git
 	}
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {

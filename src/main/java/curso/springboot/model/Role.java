@@ -41,5 +41,6 @@ public class Role implements GrantedAuthority {
 		return "Role [id=" + id + ", nomeRole=" + nomeRole + "]";
 	}
 	
+
 	
 }

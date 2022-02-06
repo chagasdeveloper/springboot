@@ -28,16 +28,21 @@ public class Pessoa implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
 	@NotNull(message = "Nome não pode ser nulo")
 	@NotEmpty(message = "Nome não pode ser vazio")
 	private String nome;
+
 	@NotNull(message = "Sobrenome não pode ser nulo")
 	@NotEmpty(message = "Sobrenome não pode ser vazio")
 	private String sobrenome;
+
 	@Min(value = 18, message = "Idade Inválida!")
 	private int idade;
+
 	@OneToMany(mappedBy = "pessoa", orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<Telefone> telefones;
+
 	private String cep;
 	private String rua;
 	private String bairro;
@@ -45,13 +50,17 @@ public class Pessoa implements Serializable {
 	private String uf;
 	private String ibge;
 	private String sexopessoa;
+
 	@ManyToOne
 	private Profissao profissao;
+
 	@Enumerated(EnumType.STRING)
 	private Cargo cargo;
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
+
 	@Lob
 	private byte[] curriculo;
 	private String tipoFileCurriculo;
